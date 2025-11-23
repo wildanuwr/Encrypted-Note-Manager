@@ -9,11 +9,11 @@ load_dotenv()
 app = Flask(__name__, static_folder='frontend', static_url_path='/')
 
 # Config from env
-DB_HOST = os.environ.get('DB_HOST', '127.0.0.1')
-DB_PORT = int(os.environ.get('DB_PORT', '3306'))
-DB_USER = os.environ.get('DB_USER', 'root')
-DB_PASS = os.environ.get('DB_PASS', '')
-DB_NAME = os.environ.get('DB_NAME', 'encrypted_notes')
+DB_HOST = os.environ.get('DB_HOST')
+DB_PORT = int(os.environ.get('DB_PORT'))
+DB_USER = os.environ.get('DB_USER')
+DB_PASS = os.environ.get('DB_PASS')
+DB_NAME = os.environ.get('DB_NAME')
 XOR_KEY = os.environ.get('XOR_KEY', None)
 
 if not XOR_KEY:
