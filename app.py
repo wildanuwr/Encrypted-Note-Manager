@@ -1,22 +1,3 @@
-#!/usr/bin/env python3
-"""
-Encrypted Notes Manager
-Flask API yang melakukan CRUD ke MySQL dan menyimpan `content` terenkripsi
-menggunakan stream XOR sederhana.
-
-Environment variables:
-- DB_HOST (default 127.0.0.1)
-- DB_PORT (default 3306)
-- DB_USER
-- DB_PASS
-- DB_NAME (default encrypted_notes)
-- XOR_KEY (required; untuk demo gunakan string yang cukup panjang)
-
-Run: python app.py
-
-Note: for demonstration/teaching only. XOR stream sederhana TIDAK aman untuk produksi.
-"""
-
 import os
 from flask import Flask, request, jsonify, abort, send_from_directory
 import mysql.connector
