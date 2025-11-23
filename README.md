@@ -8,6 +8,33 @@ Aplikasi sederhana yang melakukan operasi CRUD pada database MySQL sambil mengen
 - Konten disimpan terenkripsi dengan stream XOR
 - Frontend web sederhana
 
+## Penjelasan Implementasi XOR pada Kode
+
+Pada aplikasi ini, proses enkripsi dan dekripsi dilakukan dengan fungsi `xor_stream_bytes`:
+
+```python
+def xor_stream_bytes(data: bytes, key: bytes) -> bytes:
+    if not key:
+        raise ValueError('Empty key')
+    out = bytearray(len(data))
+    klen = len(key)
+    for i, b in enumerate(data):
+        out[i] = b ^ key[i % klen]
+    return bytes(out)
+```
+### Penjelasan langkah-langkahnya:
+
+- data dan key diubah menjadi array byte agar dapat diproses per karakter.
+- for `i`, `b in` `enumerate(data)` melakukan perulangan pada setiap byte plaintext (atau ciphertext).
+- `i % klen` memastikan kunci digunakan berulang sepanjang data (stream cipher).
+- Operasi inti adalah `b ^ key[...]` yaitu operasi XOR antara byte data dan byte kunci.
+- Hasil XOR disimpan ke out, lalu dikembalikan sebagai bytes.
+- Karena sifat XOR yang reversible, fungsi ini digunakan dua arah:
+- Enkripsi: cipher = XOR(plaintext, key)
+- Dekripsi: plaintext = XOR(cipher, key)
+
+Sehingga proses enkripsi dan dekripsi memakai fungsi yang sama. Enkripsi diterapkan di fungsi `encrypt_text()`, dan dekripsi di `decrypt_bytes()`.
+
 ## Persyaratan
 - Python 3.8+
 - MySQL / MariaDB
@@ -45,8 +72,9 @@ Aplikasi sederhana yang melakukan operasi CRUD pada database MySQL sambil mengen
 - `DELETE /notes/<id>` — hapus catatan
 
 ## Catatan Keamanan
-- Stream XOR pada repo ini sengaja dibuat sederhana untuk tujuan pengajaran. Kelemahan:
+- Stream XOR pada repo ini sengaja dibuat untuk tujuan tugas matakuliah kriptografi dan steganografi. Kelemahan:
   - Menggunakan kembali kunci dapat membocorkan informasi
   - Tidak ada autentikasi / tidak ada pemeriksaan integritas
   - Panjang kunci berpengaruh pada keamanan
 - Untuk sistem produksi, gunakan AES-GCM atau mode enkripsi terautentikasi lainnya.
+

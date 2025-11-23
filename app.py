@@ -68,7 +68,7 @@ def get_db_conn():
 
 def xor_stream_bytes(data: bytes, key: bytes) -> bytes:
     """
-    Fungsi XOR stream sederhana.
+    Fungsi XOR stream.
     Setiap byte plaintext di-XOR dengan byte key secara berulang (key modulo panjang).
     """
     if not key:
@@ -144,7 +144,7 @@ def get_note(note_id):
 
     nid, title, content_blob, created_at, updated_at = row
 
-    # Dekripsi content
+    # Dekripsi content menggunakan fungsi yang sudah dibuat sebelumnya
     content = decrypt_bytes(content_blob)
 
     return jsonify({
