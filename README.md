@@ -46,15 +46,21 @@ Sehingga proses enkripsi dan dekripsi memakai fungsi yang sama. Enkripsi diterap
 - MySQL / MariaDB
 
 ## Persiapan
+### Lakukan Clone
+```
+git clone https://github.com/wildanuwr/Encrypted-Note-Manager.git
+```
 1. Buat database dan tabel:
     ```bash
     mysql -u root -p < sql/dump_notes.sql
     ```
 2. Buat virtualenv dan install dependency:
     ```bash
+    copy env.example ke .env
     pip install -r requirements.txt
     ```
 3. Export variabel lingkungan:
+    pada file `.env` Sesuaikan Dengan Db Yang digunakan
     ```bash
     export DB_HOST=127.0.0.1
     export DB_PORT=3306
