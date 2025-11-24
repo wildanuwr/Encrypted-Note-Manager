@@ -10,8 +10,11 @@ Aplikasi sederhana yang melakukan operasi CRUD pada database MySQL sambil mengen
 
 ## Percobaan
 Pada Gambar Dibawah Ini Menunjukan Dimana Menggunakan Kunci Aslinya Dan Catatan/Plaintext Dapat Terbaca Dengan Normal/Tertata
+
 ![Tampilan Plaintext Dengan Kunci Yang Sesuai](image/Screenshot_2.png)
+
 Dan Pada Gambar Dibawah Ini Ketika Saya Mencoba Ganti Kuncinya yang tidak sesuai Maka Tampilan Catatan/Plaintext Berubah Tidak Dapat Dibaca Dengan Normal
+
 ![Tampilan Plaintext Dengan Kunci Yang Tidak Sesuai](image/Screenshot_3.png)
 
 ## Penjelasan Implementasi XOR pada Kode
